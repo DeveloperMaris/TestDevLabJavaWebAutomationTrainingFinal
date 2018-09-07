@@ -15,9 +15,9 @@ Feature: This feature is about booking a flight
       And I set 2 children
       And I set 1 infant
       And I search for a flight
-      And I book the first flight offer available
-      And I confirm the booking
-      And I navigate to Home page
-      And I navigate to Accounts page
-      And I open invoice for the newest booking
-    Then new booking contains correct flight details
+#      And I book the first flight offer available
+#      And I confirm the booking
+#      And I navigate to Home page
+#      And I navigate to Accounts page
+#      And I open invoice for the newest booking
+#    Then new booking contains correct flight details
