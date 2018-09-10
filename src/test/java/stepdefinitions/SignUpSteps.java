@@ -1,8 +1,9 @@
 package stepdefinitions;
 
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import general.TestContext;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SignUpSteps {
 
@@ -12,8 +13,16 @@ public class SignUpSteps {
         this.test = testContext;
     }
 
-    @Given("^I have created new account$")
-    public void createNewAccount() {
+    @And("^I am in Sign Up page$")
+    public void iAmInSignUpPage() {
+        test.getNavigation().waitUntilPageLoadingIsFinished();
+
+        assertThat(test.getSignUpPage().isLoginContainerVisible()).isTrue();
+        assertThat(test.getSignUpPage().isSignUpButtonVisible()).isTrue();
+    }
+
+    @And("^I create a new account in Sign Up page$")
+    public void iCreateNewAccount() {
         iEnterFirstName();
         iEnterLastName();
         iEnterMobileNumber();
@@ -22,35 +31,35 @@ public class SignUpSteps {
         iConfirmPassword();
         iSelectSignUpButtonInSignUpPage();
 
-        test.getSignUpPage().waitUntilSignUpFormIsGone();
+        test.getSignUpPage().waitUntilSignUpFormLoaderIsGone();
     }
 
-    @And("^I enter First name$")
+    @And("^I enter First name in Sign Up page$")
     public void iEnterFirstName() {
         test.getSignUpPage().enterFirstName(test.getUser().getFirstName());
     }
 
-    @And("^I enter Last name$")
+    @And("^I enter Last name in Sign Up page$")
     public void iEnterLastName() {
         test.getSignUpPage().enterLastName(test.getUser().getLastName());
     }
 
-    @And("^I enter Mobile number$")
+    @And("^I enter Mobile number in Sign Up page$")
     public void iEnterMobileNumber() {
         test.getSignUpPage().enterMobileNumber(test.getUser().getMobileNumber());
     }
 
-    @And("^I enter Email address$")
+    @And("^I enter Email address in Sign Up page$")
     public void iEnterEmailAddress() {
         test.getSignUpPage().enterEmail(test.getUser().getEmailAddress());
     }
 
-    @And("^I enter Password$")
+    @And("^I enter Password in Sign Up page$")
     public void iEnterPassword() {
         test.getSignUpPage().enterPassword(test.getUser().getPassword());
     }
 
-    @And("^I confirm Password$")
+    @And("^I confirm Password in Sign Up page$")
     public void iConfirmPassword() {
         test.getSignUpPage().enterConfirmationPassword(test.getUser().getPassword());
     }

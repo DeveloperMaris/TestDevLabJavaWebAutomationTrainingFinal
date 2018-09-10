@@ -1,17 +1,19 @@
 package pages.signup;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import pages.account.AccountPageObject;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.page;
 
 public class SignUpPageObject {
 
     // --- Selectors ---
+
+    private SelenideElement getLoginContainer() {
+        return $("#login");
+    }
 
     private SelenideElement getFirstNameField() {
         return $("input[name='firstname']");
@@ -39,18 +41,6 @@ public class SignUpPageObject {
 
     private SelenideElement getSignUpButton() {
         return $("#headersignupform .signupbtn");
-    }
-
-    private SelenideElement getFormTitle() {
-        return $(".panel-heading");
-    }
-
-    private SelenideElement getErrorField() {
-        return $(".alert-danger");
-    }
-
-    private ElementsCollection getErrorList() {
-        return $$(".alert-danger p");
     }
 
     private SelenideElement getRotationLoader() {
@@ -90,7 +80,15 @@ public class SignUpPageObject {
 
     // --- Validation Methods ---
 
-    public void waitUntilSignUpFormIsGone() {
+    public boolean isLoginContainerVisible() {
+        return getLoginContainer().isDisplayed();
+    }
+
+    public boolean isSignUpButtonVisible() {
+        return getSignUpButton().isDisplayed();
+    }
+
+    public void waitUntilSignUpFormLoaderIsGone() {
         getRotationLoader().waitUntil(Condition.not(Condition.visible), 5000);
     }
 

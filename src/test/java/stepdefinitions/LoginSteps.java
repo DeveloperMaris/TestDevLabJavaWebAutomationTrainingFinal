@@ -1,8 +1,11 @@
 package stepdefinitions;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import general.TestContext;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class LoginSteps {
 
@@ -12,9 +15,20 @@ public class LoginSteps {
         this.test = testContext;
     }
 
-    @When("^I login this account$")
-    public void iLoginThisAccount() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @And("^I am in Login page$")
+    public void iAmInLoginPage() {
+        test.getNavigation().waitUntilPageLoadingIsFinished();
+
+        assertThat(test.getLoginPage().isLoginFormVisible()).isTrue();
+        assertThat(test.getLoginPage().isLoginButtonVisible()).isTrue();
+    }
+
+    @When("^I login into existing account$")
+    public void iLoginIntoExistingAccount() {
+        test.getLoginPage().enterEmail(test.getUser().getEmailAddress());
+        test.getLoginPage().enterPassword(test.getUser().getPassword());
+
+        test.getLoginPage().selectLoginButton();
+
     }
 }
