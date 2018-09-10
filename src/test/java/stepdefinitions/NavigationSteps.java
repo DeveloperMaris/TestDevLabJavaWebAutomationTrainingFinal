@@ -12,9 +12,34 @@ public class NavigationSteps {
         this.test = testContext;
     }
 
-    @And("^I navigate to Home page$")
-    public void iNavigateToHomePage() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+    @And("^I select My Account button in Navigation bar$")
+    public void iSelectMyAccountButtonInNavigationBar() {
+        test.getNavigation().selectMyAccountButton();
     }
+
+    @And("^I select Sign Up button in Navigation bar$")
+    public void iSelectSignUpButtonInNavigationBar() {
+        test.getNavigation().selectSignUpButton();
+    }
+
+    @And("^I select Login button in Navigation bar$")
+    public void iSelectLoginButtonInNavigationBar() {
+        test.getNavigation().selectLoginButton();
+    }
+
+    @And("^I select User Account button in Navigation bar$")
+    public void iSelectUserAccountButtonInNavigationBar() {
+        test.getNavigation().selectUserAccountButton(test.getUser().getFirstName());
+    }
+
+    @And("^I select Home button in Navigation bar$")
+    public void iSelectHomeButtonInNavigationBar() {
+        test.getNavigation().selectHomeButton();
+    }
+
+    @And("^I click on Logout button$")
+    public void iClickOnLogoutButton() {
+        test.getNavigation().selectLogoutButton();
+    }
+
 }
