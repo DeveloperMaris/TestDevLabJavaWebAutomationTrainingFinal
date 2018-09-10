@@ -1,5 +1,6 @@
 package pages.login;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import pages.account.AccountPageObject;
 
@@ -47,8 +48,8 @@ public class LoginPageObject {
         return getLoginForm().isDisplayed();
     }
 
-    public boolean isLoginButtonVisible() {
-        return getLoginButton().isDisplayed();
+    public void waitUntilLoginButtonIsVisible() {
+        getLoginButton().waitUntil(Condition.visible, 5000);
     }
 
 }

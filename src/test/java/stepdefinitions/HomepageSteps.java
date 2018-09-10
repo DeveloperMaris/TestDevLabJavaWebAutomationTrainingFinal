@@ -24,6 +24,16 @@ public class HomepageSteps {
 
     @And("^I select ([^\\”]*) menu in booking section$")
     public void iSelectMenuInBookingSection(String menu) {
-        test.getHomepage().selectBookingMenu(menu.toLowerCase());
+        test.getHomepage().selectBookingMenu(menu);
+    }
+
+    @And("^I select ([^\\”]*) flight option$")
+    public void iSelectFlightOption(String flightOption) {
+        test.getHomepage().selectFlightOption(flightOption);
+    }
+
+    @And("^I set ([^\\”]*) class tickets$")
+    public void iSetClassTickets(String className) {
+        test.getHomepage().selectClassTicketRadioBox(className.toLowerCase());
     }
 }

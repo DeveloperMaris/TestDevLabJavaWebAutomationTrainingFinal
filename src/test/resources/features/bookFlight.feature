@@ -15,8 +15,8 @@ Feature: This feature is about booking a flight
       And I am in My Account page
       And I select Home button in Navigation bar
       And I select FLIGHTS menu in booking section
-#      And I select ROUND TRIP flight option
-#      And I set FIRST class tickets
+      And I select Round Trip flight option
+      And I set FIRST class tickets
 #      And I set BARCELONA as arrival airport
 
 
