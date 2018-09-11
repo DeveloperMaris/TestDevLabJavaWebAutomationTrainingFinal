@@ -16,9 +16,21 @@ Feature: This feature is about booking a flight
       And I select Home button in Navigation bar
       And I select FLIGHTS menu in booking section
       And I select Round Trip flight option
-      And I set FIRST class tickets
-#      And I set BARCELONA as arrival airport
-
+      And I set BUSINESS class tickets
+      And I set Riga as departure airport
+      And I set Barcelona as arrival airport
+      And I set 01.02.2019 as departure date
+      And I set 03.02.2019 as return date
+      And I select guests field
+      And I set 2 adults
+      And I set 2 children
+      And I set 1 infant
+      And I click on Done button in guests popup
+      And I search for a flight
+      And I am in Flight List page
+      And I book the first flight offer available
+      And I am in Confirmation page
+      And I confirm the booking
 
 #    Given I have an existing account
 #    When I login this account
