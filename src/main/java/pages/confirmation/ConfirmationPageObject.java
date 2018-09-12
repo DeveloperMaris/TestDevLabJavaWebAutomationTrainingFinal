@@ -1,5 +1,6 @@
 package pages.confirmation;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import pages.invoice.InvoicePageObject;
 
@@ -18,10 +19,20 @@ public class ConfirmationPageObject {
         return $("#body-section button[type='submit']");
     }
 
+    private SelenideElement getPleaseWaitElement() {
+        return $("#waiting");
+    }
+
+    private SelenideElement getRotationLoader() {
+        return $("#rotatingDiv");
+    }
+
     // --- Methods ---
 
-    public InvoicePageObject selectConfirmationButton() {
+    public InvoicePageObject selectConfirmationButtonAndWait() {
         getConfirmationButton().click();
+        waitUntilPleaseWaitLabelIsGone();
+        waitUntilRotatingLoaderIsGone();
         return page(InvoicePageObject.class);
     }
 
@@ -29,6 +40,18 @@ public class ConfirmationPageObject {
 
     public boolean isBookingSummaryAvailable() {
         return getBookingSummaryElement().isDisplayed();
+    }
+
+    public boolean isConfirmationButtonVisible() {
+        return getConfirmationButton().isDisplayed();
+    }
+
+    public void waitUntilPleaseWaitLabelIsGone() {
+        getPleaseWaitElement().waitUntil(Condition.not(Condition.visible), 5000);
+    }
+
+    public void waitUntilRotatingLoaderIsGone() {
+        getRotationLoader().waitUntil(Condition.not(Condition.visible), 5000);
     }
 
 }

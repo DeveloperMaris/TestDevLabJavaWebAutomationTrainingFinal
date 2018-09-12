@@ -1,6 +1,5 @@
 package stepdefinitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import general.TestContext;
 
@@ -19,10 +18,11 @@ public class ConfirmationSteps {
         test.getNavigation().waitUntilPageLoadingIsFinished();
 
         assertThat(test.getConfirmationPage().isBookingSummaryAvailable()).isTrue();
+        assertThat(test.getConfirmationPage().isConfirmationButtonVisible()).isTrue();
     }
 
     @And("^I confirm the booking$")
     public void iConfirmTheBooking() {
-        test.getConfirmationPage().selectConfirmationButton();
+        test.getConfirmationPage().selectConfirmationButtonAndWait();
     }
 }

@@ -85,6 +85,7 @@ public class HomepagePageObject {
     private SelenideElement getFlightsSearchButton() {
         return $("#flights button[type='submit']");
     }
+
     // --- Methods ---
 
     public void selectBookingMenu(String menuName) {

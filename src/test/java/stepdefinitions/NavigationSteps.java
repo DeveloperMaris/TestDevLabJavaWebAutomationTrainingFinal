@@ -42,4 +42,8 @@ public class NavigationSteps {
         test.getNavigation().selectLogoutButton();
     }
 
+    @And("^I select Account button in Navigation bar$")
+    public void iSelectAccountButtonInNavigationBar() {
+        test.getNavigation().selectAccountButton();
+    }
 }
