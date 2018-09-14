@@ -1,11 +1,14 @@
 package pages.account;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.impl.CollectionElement;
 import org.openqa.selenium.By;
 import pages.invoice.InvoicePageObject;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.page;
 
 public class AccountPageObject {
@@ -16,8 +19,8 @@ public class AccountPageObject {
         return $(".RTL h3");
     }
 
-    private SelenideElement getInvoiceButton() {
-        return $(By.xpath("//a[contains(text(), 'Invoice')]"));
+    private ElementsCollection getInvoiceButtons() {
+        return $$(By.xpath("//a[contains(text(), 'Invoice')]"));
     }
 
     // --- Methods ---
@@ -30,8 +33,9 @@ public class AccountPageObject {
         return getAccountDataField().getText().split(" ")[2];
     }
 
-    public InvoicePageObject selectInvoiceButton() {
-        getInvoiceButton().click();
+    // Warning: Web page opens a new tab after this step
+    public InvoicePageObject selectNewestInvoiceButton() {
+        getInvoiceButtons().first().click();
         return page(InvoicePageObject.class);
     }
 

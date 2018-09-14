@@ -3,7 +3,9 @@ package stepdefinitions;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import general.TestContext;
+import pages.flights.FlightListPageObject;
 
+import static com.codeborne.selenide.Selenide.page;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class HomepageSteps {
@@ -30,6 +32,7 @@ public class HomepageSteps {
     public void iSelectFlightOption(String flightOption) {
         test.getFlight().setTripType(flightOption);
         test.getHomepage().selectFlightsOption(test.getFlight().getTripType());
+        test.getFlight().setTripDataType(test.getHomepage().getSelectedFlightOptionDataType());
     }
 
     @And("^I set ([^\\”]*) class tickets$")
@@ -99,7 +102,8 @@ public class HomepageSteps {
     }
 
     @And("^I search for a flight$")
-    public void iSearchForAFlight() {
+    public FlightListPageObject iSearchForAFlight() {
         test.getHomepage().selectFlightsSearchButton();
+        return page(FlightListPageObject.class);
     }
 }

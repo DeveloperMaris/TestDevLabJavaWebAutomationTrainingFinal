@@ -24,6 +24,8 @@ public class FlightListSteps {
     @And("^I book the first flight offer available$")
     public void iBookTheFirstFlightOfferAvailable() {
         assertThat(test.getFlightListPage().getFlightListElements().size()).isGreaterThanOrEqualTo(1);
+
+        test.getFlight().setFlightPrice(test.getFlightListPage().getFlightPrice(test.getFlightListPage().getFlightListElements().first()));
         test.getFlightListPage().selectFlight(test.getFlightListPage().getFlightListElements().first());
     }
 }

@@ -26,6 +26,11 @@ public class FlightListPageObject {
        return getFlightList();
     }
 
+    public String getFlightPrice(SelenideElement flightElement) {
+        String priceText = flightElement.findElementByCssSelector(".listing-price .strong").getText();
+        return priceText.substring(0, priceText.length() - 1);
+    }
+
     public ConfirmationPageObject selectFlight(SelenideElement flightElement) {
         flightElement.findElementByCssSelector("#bookbtn").click();
         return page(ConfirmationPageObject.class);

@@ -30,6 +30,10 @@ public class HomepagePageObject {
         return $(By.xpath("//div[@class='pure-checkbox'][./label[contains(text(), '" + option + "')]]/div[contains(@class, 'iradio_square-grey')]"));
     }
 
+    private SelenideElement getSelectedFlightOptionRadioBox() {
+        return $(By.xpath("//div[@class='pure-checkbox']/div[contains(@class, 'checked')]/following-sibling::label"));
+    }
+
     private SelenideElement getFlightsClassTicketSelect() {
         return $("select[name='cabinclass']");
     }
@@ -92,6 +96,10 @@ public class HomepagePageObject {
         // FIXME: Don't like this approach, but it works and is generic, while the Page will contain menus named with Capital first character.
         String formattedMenuName = menuName.substring(0, 1).toUpperCase() + menuName.substring(1).toLowerCase();
         getBookingMenu(formattedMenuName).click();
+    }
+
+    public String getSelectedFlightOptionDataType() {
+        return getSelectedFlightOptionRadioBox().getAttribute("data-type");
     }
 
     public void selectFlightsOption(String chosenOption) {
