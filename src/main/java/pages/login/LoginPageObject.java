@@ -2,6 +2,7 @@ package pages.login;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import org.openqa.selenium.By;
 import pages.account.AccountPageObject;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -13,6 +14,10 @@ public class LoginPageObject {
 
     private SelenideElement getLoginForm() {
         return $("#loginfrm");
+    }
+
+    private SelenideElement getLoginFieldsBlock() {
+        return $(By.xpath("//div[@class='wow fadeIn animated']"));
     }
 
     private SelenideElement getEmailField() {
@@ -46,6 +51,10 @@ public class LoginPageObject {
 
     public boolean isLoginFormVisible() {
         return getLoginForm().isDisplayed();
+    }
+
+    public void waitUntilLoginFieldsBlockIsVisible() {
+        getLoginFieldsBlock().waitUntil(Condition.visible, 5000);
     }
 
     public void waitUntilLoginButtonIsVisible() {

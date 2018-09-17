@@ -19,7 +19,7 @@ public class LoginSteps {
         test.getNavigation().waitUntilPageLoadingIsFinished();
 
         assertThat(test.getLoginPage().isLoginFormVisible()).isTrue();
-        test.getLoginPage().waitUntilLoginButtonIsVisible();
+        test.getLoginPage().waitUntilLoginFieldsBlockIsVisible();
     }
 
     @When("^I login into existing account$")
