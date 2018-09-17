@@ -1,7 +1,6 @@
 package pages.confirmation;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import pages.invoice.InvoicePageObject;

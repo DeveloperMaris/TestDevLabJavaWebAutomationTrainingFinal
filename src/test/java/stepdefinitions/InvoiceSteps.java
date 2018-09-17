@@ -1,6 +1,5 @@
 package stepdefinitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import general.TestContext;
@@ -35,6 +34,18 @@ public class InvoiceSteps {
 
         assertThat(test.getInvoicePage().getFlightReturnTypeAndClass()).contains(test.getFlight().getClassType().toLowerCase());
         assertThat(test.getInvoicePage().getFlightReturnTypeAndClass()).contains(test.getFlight().getTripDataType().toLowerCase());
+
+        assertThat(test.getInvoicePage().getDepartFromFlightAirlineCode()).isEqualTo(test.getFlight().getLocationFromCode());
+        assertThat(test.getInvoicePage().getDepartToFlightAirlineCode()).isEqualTo(test.getFlight().getLocationToCode());
+
+        assertThat(test.getInvoicePage().getArrivalFromFlightAirlineCode()).isEqualTo(test.getFlight().getLocationToCode());
+        assertThat(test.getInvoicePage().getArrivalToFlightAirlineCode()).isEqualTo(test.getFlight().getLocationFromCode());
+
+        assertThat(test.getInvoicePage().getDepartFromFlightAirlineName()).isEqualTo(test.getFlight().getLocationFrom());
+        assertThat(test.getInvoicePage().getDepartToFlightAirlineName()).isEqualTo(test.getFlight().getLocationTo());
+
+        assertThat(test.getInvoicePage().getArrivalFromFlightAirlineName()).isEqualTo(test.getFlight().getLocationTo());
+        assertThat(test.getInvoicePage().getArrivalToFlightAirlineName()).isEqualTo(test.getFlight().getLocationFrom());
     }
 
     @And("^I switch to Invoice page tab$")

@@ -6,7 +6,9 @@ import lombok.Data;
 public class Flight {
 
     private String locationFrom;
+    private String locationFromCode;
     private String locationTo;
+    private String locationToCode;
     private String tripType;
     private String tripDataType;
     private String classType;
