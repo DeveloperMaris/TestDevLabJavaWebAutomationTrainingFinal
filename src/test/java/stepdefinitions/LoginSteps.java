@@ -1,6 +1,5 @@
 package stepdefinitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 import general.TestContext;
@@ -20,7 +19,7 @@ public class LoginSteps {
         test.getNavigation().waitUntilPageLoadingIsFinished();
 
         assertThat(test.getLoginPage().isLoginFormVisible()).isTrue();
-        assertThat(test.getLoginPage().isLoginButtonVisible()).isTrue();
+        test.getLoginPage().waitUntilLoginFieldsBlockIsVisible();
     }
 
     @When("^I login into existing account$")

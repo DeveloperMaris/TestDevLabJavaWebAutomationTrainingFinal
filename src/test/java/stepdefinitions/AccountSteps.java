@@ -1,6 +1,5 @@
 package stepdefinitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import general.TestContext;
 
@@ -23,11 +22,16 @@ public class AccountSteps {
         assertThat(test.getAccountPage().isAccountDataVisible()).isTrue();
     }
 
-    @And("^I have an existing account$")
-    public void iHaveAnExistingAccount() {
-        test.getNavigation().waitUntilPageLoadingIsFinished();
-
+    @And("^this is my account$")
+    public void thisIsMyAccount() {
         assertThat(test.getAccountPage().getAccountName()).isEqualTo(test.getUser().getFirstName());
         assertThat(test.getAccountPage().getAccountLastname()).isEqualTo(test.getUser().getLastName());
     }
+
+    @And("^I select newest invoice in Account page$")
+    public void iSelectNewestInvoiceInAccountPage() {
+        test.getAccountPage().selectNewestInvoiceButton();
+    }
+
+
 }

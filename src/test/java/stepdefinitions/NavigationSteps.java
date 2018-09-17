@@ -1,6 +1,5 @@
 package stepdefinitions;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import general.TestContext;
 
@@ -42,4 +41,8 @@ public class NavigationSteps {
         test.getNavigation().selectLogoutButton();
     }
 
+    @And("^I select Account button in Navigation bar$")
+    public void iSelectAccountButtonInNavigationBar() {
+        test.getNavigation().selectAccountButton();
+    }
 }

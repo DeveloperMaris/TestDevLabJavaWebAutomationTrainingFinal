@@ -34,6 +34,10 @@ public class NavigationPageObject {
         return $(By.xpath("//nav/descendant::a[contains(text(), 'Logout')]"));
     }
 
+    private SelenideElement getAccountButton() {
+        return $(By.xpath("//nav/descendant::a[contains(text(), 'Account')]"));
+    }
+
     private SelenideElement getUserAccountButton(String username) {
         return $(By.xpath("//nav/descendant::a[contains(text(), '" + username + "')]"));
     }
@@ -46,6 +50,10 @@ public class NavigationPageObject {
 
     public void selectUserAccountButton(String name) {
         getUserAccountButton(name).click();
+    }
+
+    public void selectAccountButton() {
+        getAccountButton().click();
     }
 
     public void selectSignUpButton() {

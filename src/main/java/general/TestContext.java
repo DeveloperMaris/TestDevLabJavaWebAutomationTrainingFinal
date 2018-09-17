@@ -2,8 +2,11 @@ package general;
 
 import lombok.Data;
 import pages.account.AccountPageObject;
+import pages.confirmation.ConfirmationPageObject;
+import pages.flights.FlightListPageObject;
 import pages.header.NavigationPageObject;
 import pages.homepage.HomepagePageObject;
+import pages.invoice.InvoicePageObject;
 import pages.login.LoginPageObject;
 import pages.signup.SignUpPageObject;
 
@@ -22,6 +25,9 @@ public class TestContext {
     private SignUpPageObject signUpPage;
     private LoginPageObject loginPage;
     private AccountPageObject accountPage;
+    private FlightListPageObject flightListPage;
+    private ConfirmationPageObject confirmationPage;
+    private InvoicePageObject invoicePage;
 
     public TestContext() {
         this.user = new User();
@@ -31,6 +37,9 @@ public class TestContext {
         this.signUpPage = new SignUpPageObject();
         this.loginPage = new LoginPageObject();
         this.accountPage = new AccountPageObject();
+        this.flightListPage = new FlightListPageObject();
+        this.confirmationPage = new ConfirmationPageObject();
+        this.invoicePage = new InvoicePageObject();
     }
 
 }
